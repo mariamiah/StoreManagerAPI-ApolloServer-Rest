@@ -1,0 +1,1 @@
+### Store manager API Apollo Server
