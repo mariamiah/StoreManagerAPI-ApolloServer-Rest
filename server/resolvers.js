@@ -1,9 +1,8 @@
 module.exports = {
     Query: {
-        products: (_, __, { dataSources }) => 
+        products: (_, __, { dataSources }, info) => 
             dataSources.storeAPI.getProducts(),
-        product: (_,{id}, {dataSources}) =>
-            dataSources.StoreManagerAPI.getProductById({ productId: id}),
-        me: (_,__, { dataSources }) => dataSources.storeAPI.createUser()
+        product: (_, {id}, {dataSources}, info) =>
+            dataSources.storeAPI.getProductById(id)
     }
 }

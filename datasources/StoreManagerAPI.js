@@ -8,7 +8,7 @@ class StoreManagerAPI extends RESTDataSource {
 
     async getProducts() {
         const response = await this.get('products')
-        return Array.isArray(response) ? response.map(product => this.productReducer(product)):[];
+        return (response.length > 0 && Array.isArray(response)) ? response.map(product => this.productReducer(product)):[];
     }
 
     productReducer(product) {
@@ -32,16 +32,16 @@ class StoreManagerAPI extends RESTDataSource {
         )
     }
 
-    async createUser({ username, password }) {
-        const response = await this.post('auth/login', {username, password})
-        return this.userReducer(response[0])
-    }
+    // async createUser({ username, password }) {
+    //     const response = await this.post('auth/login', {username, password})
+    //     return this.userReducer(response[0])
+    // }
 
-    userReducer(user) {
-        return {
-            token: user.token
-        }
-    }
+    // userReducer(user) {
+    //     return {
+    //         token: user.token
+    //     }
+    // }
 
 }
 
